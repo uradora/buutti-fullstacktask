@@ -48,7 +48,22 @@ booksRouter.post('/', async (request, response) => {
     })
 })
 
-profilesRouter.delete('/:id', async (request, response) => {
+booksRouter.put('/:id', async (request, response) => {
+  const body = request.body
+
+  const updated = await knex
+    ('books')
+    .where('id', request.params.id)
+    .update(body)
+
+  if (updated) {
+    return response.status(200).json(`Päivitetty: ${updated}`)
+  } else {
+    return response.status(404).json(`Päivitettävää ei löytynyt`)
+  }
+})
+
+booksRouter.delete('/:id', async (request, response) => {
   knex('books')
     .where('id', request.params.id)  
     .del()

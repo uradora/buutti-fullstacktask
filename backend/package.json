@@ -1,4 +1,13 @@
 {
+  "name": "buutti-fullstacktask",
+  "version": "1.0.0",
+  "description": "Pieni full stack -kirjasovellus",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
