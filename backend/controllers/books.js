@@ -39,7 +39,7 @@ booksRouter.post('/', async (request, response) => {
   knex('books')
     .insert(newBook)
     .then(() => {
-      response.json(`Kirjan nimeltä ${body.title} lisääminen onnistui`)
+      response.json(newBook)
     })
     .catch(err => {
       return response

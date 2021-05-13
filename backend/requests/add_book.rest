@@ -2,7 +2,7 @@ POST http://localhost:3001/books
 Content-Type: application/json
 
 {
-    "title": "Tuntematon sotilas",
+    "title": "Täällä pohjantähden alla",
     "author": "Väinö Linna",
     "description": "Suomalainen klassikko"
 }

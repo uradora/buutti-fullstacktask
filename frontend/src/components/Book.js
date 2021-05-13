@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import bookService from './../services/books'
+import './../styles/app.css'
 
-const Book = ({ book }) => {
+const Book = ({ book, handleClick }) => {
   return (
-    <div>
-      {book.title}
-      <br />
-      {book.author}
-      <br />
-      {book.description}
+      <div onClick={() => handleClick(book)}>
+        Nimi: {book.title}
+        <br />
+        Kirjailija: {book.author}
     </div>
   )
 }

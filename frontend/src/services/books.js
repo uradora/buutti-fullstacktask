@@ -6,4 +6,9 @@ const getAll = () => {
   return request.then((response) => response.data)
 }
 
-export default { getAll }
+const addBook = async (newBook) => {
+  const response = await axios.post(baseUrl, newBook)
+  return response.data
+}
+
+export default { getAll, addBook }
