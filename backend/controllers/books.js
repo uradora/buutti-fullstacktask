@@ -51,16 +51,27 @@ booksRouter.post('/', async (request, response) => {
 booksRouter.put('/:id', async (request, response) => {
   const body = request.body
 
+  const bookToUpdate = await knex('books')
+    .where('id', request.params.id)
+
+  const updatedBook = {
+    title: body.title || bookToUpdate.title,
+    author: body.author || bookToUpdate.author,
+    description: body.description || bookToUpdate.description
+  }
+
   const updated = await knex
     ('books')
     .where('id', request.params.id)
-    .update(body)
-
-  if (updated) {
-    return response.status(200).json(`Päivitetty: ${updated}`)
-  } else {
-    return response.status(404).json(`Päivitettävää ei löytynyt`)
-  }
+    .update(updatedBook)
+    .then(() => {
+      response.json(updatedBook)
+    })
+    .catch(err => {
+      return response
+      .status(400)
+      .json({ message: `Virhe: ${err}` })
+    })
 })
 
 booksRouter.delete('/:id', async (request, response) => {

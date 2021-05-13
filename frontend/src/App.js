@@ -7,6 +7,7 @@ const App = () => {
   const [books, setBooks] = useState([])
   const [newBook, setNewBook] = useState(
     {
+      id: '',
       title: '',
       author: '',
       description: ''
@@ -31,6 +32,7 @@ const App = () => {
         console.log(returnedBook)
         setBooks(books.concat(returnedBook))
         setNewBook = {
+          id: '',
           title: '',
           author: '',
           description: ''
@@ -41,12 +43,36 @@ const App = () => {
       })
   }
 
-  const handleEditBook = (book) => {
-    console.log(book)
+  const handleEditBook = async (book) => {
+    const idToEdit = book.id
+
+    const editedBook = {
+      'title': book.title,
+      'author': book.author,
+      'description': book.description
+    }
+    try {
+      const returnedBook = await bookService.editBook(idToEdit, editedBook)
+      setBooks(books.map((book) => book.id !== idToEdit ? book : returnedBook))
+    } catch (err) {
+      console.log(`Couldn't edit: ${err}`)
+    }
   }
 
+  const handleDeleteBook = async (book) => {
+    const idToDelete = book.id
+
+    try {
+      await bookService.deleteBook(idToDelete)
+      setBooks(books.filter((book) => book.id !== idToDelete))
+    } catch (err) {
+      console.log(`Couldn't delete: ${err}`)
+    }
+  }
+    
   const handleClick = (book) => {
     setNewBook({
+      id: book.id,
       title: book.title,
       author: book.author,
       description: book.description
@@ -69,10 +95,12 @@ const App = () => {
         ))}
       </div>
       <div className='form'>
-        <BookForm book={newBook} 
+        <BookForm 
+          book={newBook} 
           handleAddBook={handleAddBook} 
           handleChange={handleChange}
           handleEditBook={handleEditBook}
+          handleDeleteBook={handleDeleteBook}
         />
       </div>
     </div>

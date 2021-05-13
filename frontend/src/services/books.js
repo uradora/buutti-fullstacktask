@@ -11,4 +11,14 @@ const addBook = async (newBook) => {
   return response.data
 }
 
-export default { getAll, addBook }
+const editBook = async (id, editedBook) => {
+  const response = await axios.put(`${baseUrl}/${id}`, editedBook)
+  return response.data
+}
+
+const deleteBook = async (id) => {
+  const response = await axios.delete(`${baseUrl}/${id}`)
+  return response.data
+}
+
+export default { getAll, addBook, editBook, deleteBook }
