@@ -13,7 +13,7 @@ const BookForm = ({
       <div>
         <form noValidate autoComplete='off' onSubmit={() => handleAddBook(book)}>
           <div>
-            <TextField id='title' label='Nimi' type='text'
+            <TextField id='title' label='Title' type='text'
               defaultvalue={book.title}
               value={book.title}
               name='title'
@@ -22,7 +22,7 @@ const BookForm = ({
           </div>
           <br />
           <div>
-            <TextField id='author' label='Kirjailija' type='text'
+            <TextField id='author' label='Author' type='text'
               defaultvalue={book.author}
               value={book.author}
               name='author'
@@ -31,7 +31,7 @@ const BookForm = ({
           </div>
           <br />
           <div>
-            <TextField id='description' label='Kuvaus' type='text'
+            <TextField id='description' label='Description' type='text'
               defaultvalue={book.description}
               value={book.description}
               name='description'

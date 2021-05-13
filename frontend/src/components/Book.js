@@ -6,8 +6,8 @@ const Book = ({ book, handleClick }) => {
   return (
     <div>
       <a href='#' onClick={() => handleClick(book)}>
-        <ListItemText primary={`Nimi: ${book.title}`} />
-        <ListItemText primary={`Kirjailija: ${book.author}`} />
+        <ListItemText primary={`Title: ${book.title}`} />
+        <ListItemText primary={`Author: ${book.author}`} />
       </a>
       <br />
     </div>

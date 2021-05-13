@@ -1,5 +1,5 @@
 {
-  "name": "buutti-fullstacktask",
+  "name": "buutti-fullstacktask-backend",
   "version": "1.0.0",
   "description": "Pieni full stack -kirjasovellus",
   "main": "index.js",

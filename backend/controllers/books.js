@@ -9,7 +9,7 @@ booksRouter.get('/', async (request, response) => {
       response.json(bookData)
     })
     .catch(err => {
-      response.json({ message: `Virhe: ${err}` })
+      response.json({ message: `Error: ${err}` })
     })
 })
 
@@ -23,7 +23,7 @@ booksRouter.get('/:id', async (request, response) => {
         response.status(404).end()
       }})
     .catch(err => {
-      response.json({ message: `Virhe: ${err}` })
+      response.json({ message: `Error: ${err}` })
     })
 })
 
@@ -44,7 +44,7 @@ booksRouter.post('/', async (request, response) => {
     .catch(err => {
       return response
       .status(400)
-      .json({ message: `Virhe: ${err}` })
+      .json({ message: `Error: ${err}` })
     })
 })
 
@@ -70,7 +70,7 @@ booksRouter.put('/:id', async (request, response) => {
     .catch(err => {
       return response
       .status(400)
-      .json({ message: `Virhe: ${err}` })
+      .json({ message: `Error: ${err}` })
     })
 })
 
@@ -86,7 +86,7 @@ booksRouter.delete('/:id', async (request, response) => {
       }
     })
     .catch(err => {
-      response.json({ message: `Virhe: ${err}` })
+      response.json({ message: `Error: ${err}` })
     })
 })
 

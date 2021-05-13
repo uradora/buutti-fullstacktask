@@ -1,0 +1,32 @@
+{
+  "name": "buutti-fullstacktask",
+  "version": "1.0.0",
+  "description": "Pieni full stack -kirjasovellus",
+  "main": "frontend/src/index.js",
+  "browserslist": [
+    "last 7 versions",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "scripts": {
+    "start-server": "cd backend && node index.js",
+    "start-front": "cd frontend && react-scripts start",
+    "start": "concurrently \"npm run start-server\" \"npm run start-front\" --kill-others --kill-others-on-fail",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "axios": "0.19.2",
+    "body-parser": "1.19.0",
+    "compression": "1.7.4",
+    "concurrently": "^6.1.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "helmet": "3.22.0",
+    "knex": "0.20.13",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-scripts": "^4.0.3"
+  }
+}
