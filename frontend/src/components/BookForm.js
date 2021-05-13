@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextField, Button } from '@material-ui/core/'
 import './../styles/app.css'
 
-const BookForm = ({ book, handleAddBook, handleChange }) => {
+const BookForm = ({ book, handleAddBook, handleChange, handleEditBook }) => {
   return (
       <div>
         <form noValidate autoComplete='off' onSubmit={() => handleAddBook(book)}>
@@ -25,15 +25,20 @@ const BookForm = ({ book, handleAddBook, handleChange }) => {
           </div>
           <br />
           <div>
-            <TextField id='desc' label='Kuvaus' type='text'
+            <TextField id='description' label='Kuvaus' type='text'
               defaultvalue={book.description}
               value={book.description}
-              name='desc'
+              name='description'
               onChange={handleChange}>
             </TextField>
           </div>
           <div>
           <Button variant='outlined' color='default' type='submit'>
+            Save new
+          </Button>
+          <Button variant='outlined' color='default' 
+            onClick={() => handleEditBook(book)}
+            disabled={!book.title}>
             Save
           </Button>
           </div>

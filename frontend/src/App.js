@@ -5,7 +5,6 @@ import BookForm from './components/BookForm'
 
 const App = () => {
   const [books, setBooks] = useState([])
-  const [selectedBook, setSelectedBook] = useState(null)
   const [newBook, setNewBook] = useState(
     {
       title: '',
@@ -42,6 +41,10 @@ const App = () => {
       })
   }
 
+  const handleEditBook = (book) => {
+    console.log(book)
+  }
+
   const handleClick = (book) => {
     setNewBook({
       title: book.title,
@@ -69,6 +72,7 @@ const App = () => {
         <BookForm book={newBook} 
           handleAddBook={handleAddBook} 
           handleChange={handleChange}
+          handleEditBook={handleEditBook}
         />
       </div>
     </div>
