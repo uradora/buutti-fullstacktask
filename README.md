@@ -5,6 +5,7 @@ This is small program in which a user can save information about books. Each boo
 Technologies used: 
 
 Frontend uses React and Axios to communicate with the backend.
+<br />
 Backend uses Node.js and Express for the server. Database is Sqlite3 with Knex library to build queries.
 
 ## How to use
