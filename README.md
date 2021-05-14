@@ -33,3 +33,6 @@ npm run test
 ```
 Tests should start. You might have to press 'a' on your keyboard.
 
+In the backend, VS Code and REST client are needed to test the APIs.
+Open the folder and navigate to requests. Choose the request you want to send.
+Then click 'Send request' button at the top of the window.
