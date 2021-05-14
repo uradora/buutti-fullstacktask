@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField, Button } from '@material-ui/core/'
+import { TextField, Button, StepContent } from '@material-ui/core/'
 import './../styles/app.css'
 
 const BookForm = ({ 
@@ -11,10 +11,9 @@ const BookForm = ({
  }) => {
   return (
       <div>
-        <form noValidate autoComplete='off' onSubmit={() => handleAddBook(book)}>
+        <form id='form' noValidate autoComplete='off' onSubmit={() => handleAddBook(book)}>
           <div>
             <TextField id='title' label='Title' type='text'
-              defaultvalue={book.title}
               value={book.title}
               name='title'
               onChange={handleChange}>
@@ -23,7 +22,6 @@ const BookForm = ({
           <br />
           <div>
             <TextField id='author' label='Author' type='text'
-              defaultvalue={book.author}
               value={book.author}
               name='author'
               onChange={handleChange}>
@@ -32,7 +30,6 @@ const BookForm = ({
           <br />
           <div>
             <TextField id='description' label='Description' type='text'
-              defaultvalue={book.description}
               value={book.description}
               name='description'
               onChange={handleChange}>
