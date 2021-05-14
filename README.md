@@ -18,3 +18,18 @@ First, clone this repository. Then, in the terminal, open the root directory of 
 npm run start
 ```
 This will start up both the backend and frontend.
+
+### Running tests
+
+There are Jest tests for the frontend components. Navigate to the frontend folder by typing this in at the root directory:
+
+```console
+cd frontend
+```
+Then type this:
+
+```console
+npm run test
+```
+Tests should start. You might have to press 'a' on your keyboard.
+
