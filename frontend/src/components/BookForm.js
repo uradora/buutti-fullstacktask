@@ -11,8 +11,10 @@ const BookForm = ({
  }) => {
   return (
       <div>
-        <form id='form' noValidate autoComplete='off' onSubmit={() => handleAddBook(book)}>
-          <div>
+        <br />
+        <br />
+        <form className='form' noValidate autoComplete='off' onSubmit={() => handleAddBook(book)}>
+          <div className='form-group'>
             <TextField id='title' label='Title' type='text'
               value={book.title}
               name='title'
@@ -20,7 +22,7 @@ const BookForm = ({
             </TextField>
           </div>
           <br />
-          <div>
+          <div className='form-group'>
             <TextField id='author' label='Author' type='text'
               value={book.author}
               name='author'
@@ -28,13 +30,14 @@ const BookForm = ({
             </TextField>
           </div>
           <br />
-          <div>
+          <div className='form-group'>
             <TextField id='description' label='Description' type='text'
               value={book.description}
               name='description'
               onChange={handleChange}>
             </TextField>
           </div>
+          <br />
           <div>
           <Button variant='outlined' color='default' type='submit'
             disabled={!book.title || !book.author || !book.description}>
@@ -43,7 +46,7 @@ const BookForm = ({
           <Button variant='outlined' color='default' 
             onClick={() => handleEditBook(book)}
             disabled={!book.title || !book.author || !book.description}>
-            Save
+            Save edit
           </Button>
           <Button variant='outlined' color='default' 
             onClick={() => handleDeleteBook(book)}

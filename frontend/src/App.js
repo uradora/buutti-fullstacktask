@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import bookService from './services/books'
 import Book from './components/Book'
 import BookForm from './components/BookForm'
+import './styles/app.css'
 
 const App = () => {
   const [books, setBooks] = useState([])
@@ -29,7 +30,6 @@ const App = () => {
     bookService
       .addBook(newBook)
       .then((returnedBook) => {
-        console.log(returnedBook)
         setBooks(books.concat(returnedBook))
         setNewBook = {
           id: '',
@@ -80,21 +80,23 @@ const App = () => {
   }
 
   const handleChange = (event) => {
+    event.preventDefault()
     setNewBook({ ...newBook, [event.target.name]: event.target.value })
   }  
 
   return (
+
     <div className='wrapper'>
       <div className='list'>
         {books.map((book) => (
-            <Book
-              key={book.id}
-              book={book}
-              handleClick={handleClick}
-            />
+          <Book
+            key={book.id}
+            book={book}
+            handleClick={handleClick}
+          />
         ))}
       </div>
-      <div className='form'>
+      <div id='page-wrap'>
         <BookForm 
           book={newBook} 
           handleAddBook={handleAddBook} 

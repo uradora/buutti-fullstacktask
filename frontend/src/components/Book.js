@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
-import { ListItemText } from '@material-ui/core/'
+import React from 'react'
 import './../styles/app.css'
+
 
 const Book = ({ book, handleClick }) => {
   return (
     <div>
-      <a href='#' onClick={() => handleClick(book)}>
-        <ListItemText primary={`Title: ${book.title}`} />
-        <ListItemText primary={`Author: ${book.author}`} />
+      <a className='item' href='#' onClick={() => handleClick(book)}>
+        {book.title}
       </a>
-      <br />
     </div>
   )
 }
