@@ -1,93 +1,72 @@
-const knex = require('./../db/db.js')
 const booksRouter = require('express').Router()
+const book = require('./../models/book');
+const Book = require('./../models/book')
 
 booksRouter.get('/', async (request, response) => {
-  knex
-  .select('*')
-  .from('books')
-    .then(bookData => {
-      response.json(bookData)
-    })
-    .catch(err => {
-      response.json({ message: `Error: ${err}` })
-    })
+  const books = await Book.find({})
+  response.json(books.map((book) => book.toJSON()));
 })
 
 booksRouter.get('/:id', async (request, response) => {
-  knex('books')
-    .where('id', request.params.id)  
-    .then((book) => {
-      if (book) {
-        response.json(book)
-      } else {
-        response.status(404).end()
-      }})
-    .catch(err => {
-      response.json({ message: `Error: ${err}` })
-    })
+  const book = await Book.findById(request.params.id)
+  .catch(err => {
+    response.json({ message: `Error: ${err}` })
+  })
+  if (book) {
+    response.json(book)
+  } else {
+    response.status(404).end()
+  }
 })
 
 booksRouter.post('/', async (request, response) => {
   const body = request.body
 
-  const newBook = {
-    'title': body.title,
-    'author': body.author,
-    'description': body.description
-  }
-  
-  knex('books')
-    .insert(newBook)
-    .then(() => {
-      response.json(newBook)
-    })
-    .catch(err => {
-      return response
-      .status(400)
-      .json({ message: `Error: ${err}` })
-    })
+  console.log(body)
+  const newBook = new Book({
+    title: body.title,
+    author: body.author,
+    description: body.description
+  })
+
+  const savedBook = await newBook.save()
+  .catch(err => {
+    return response
+    .status(400)
+    .json({ message: `Error: ${err}` })
+  })
+  response.json(savedBook.toJSON())
 })
 
 booksRouter.put('/:id', async (request, response) => {
   const body = request.body
 
-  const bookToUpdate = await knex('books')
-    .where('id', request.params.id)
+  const bookToUpdate = await Book.findById(request.params.id)
 
-  const updatedBook = {
+  const updateBook = {
     title: body.title || bookToUpdate.title,
     author: body.author || bookToUpdate.author,
     description: body.description || bookToUpdate.description
   }
 
-  const updated = await knex
-    ('books')
-    .where('id', request.params.id)
-    .update(updatedBook)
-    .then(() => {
-      response.json(updatedBook)
-    })
-    .catch(err => {
-      return response
-      .status(400)
-      .json({ message: `Error: ${err}` })
-    })
+  const updatedBook = await Book.findByIdAndUpdate(request.params.id, updateBook, {
+    new: true,
+  })
+  .catch(err => {
+    return response
+    .status(400)
+    .json({ message: `Error: ${err}` })
+  })
+  response.json(updatedBook.toJSON())
 })
 
 booksRouter.delete('/:id', async (request, response) => {
-  knex('books')
-    .where('id', request.params.id)  
-    .del()
-    .then(message => {
-      if (message === 1) {
-        return response.status(200).json(`Poisto onnistui`)
-      } else {
-        return response.status(404).json(`Poisto ei onnistunut`)
-      }
-    })
-    .catch(err => {
-      response.json({ message: `Error: ${err}` })
-    })
+  try {
+    book = await Book.findByIdAndRemove(request.params.id)
+    return response.status(200).json(`Poisto onnistui`)
+  } catch (err) {
+    return response.json({ message: `Error: ${err}` })
+  }
 })
 
 module.exports = booksRouter
