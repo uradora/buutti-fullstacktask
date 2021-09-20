@@ -1,5 +1,7 @@
 # kirjainfo-fullstack
 
+App is in production at Heroku: http://book-info-app.herokuapp.com/
+
 This is small program in which a user can save information about books. Each book has a title, an author, and a description. The user can save new books, update info on previously saved books, and delete a book, as well as view the list of books in the browser. 
 
 Technologies used: 
