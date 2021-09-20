@@ -6,7 +6,7 @@ Technologies used:
 
 Frontend uses React and Axios to communicate with the backend.
 <br />
-Backend uses Node.js and Express for the server. Database is Sqlite3 with Knex library to build queries.
+Backend uses Node.js and Express for the server. Database is MongoDB.
 
 ## How to use
 
